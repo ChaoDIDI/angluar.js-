@@ -19,4 +19,34 @@
 
 1. 配置客户端地址
 ```javascript 
+angular.module('app',['ngRoute','ngAnimate'])
+//在config中使用provider的时候 需要加上Provider关键字后缀
+
+
+//配置客户端路由地址 index.html#/  ..进行访问
+angular.module('app').config(['$routeProvider',function ($routeProvider) {
+    $routeProvider
+        .when('/',{
+            //路由的作用就是
+            //把template和controller进行关联
+            templateUrl:'./assets/tpl/index.html',
+            controller:'indexCtrl'// 控制器名称
+        })
+        .when('/show/:id',{
+            templateUrl:'./assets/tpl/show.html',
+            controller:'showCtrl'
+        })
+        .when('/add',{
+            templateUrl:'./assets/tpl/editor.html',
+            controller:'editorCtrl'
+        })
+        .when('/editor/:id',{
+            templateUrl:'./assets/tpl/editor.html',
+            controller:'editorCtrl'
+        })
+}])
+//在angular.js ngRoute 是引入依赖的时候命名的方式
+//上面代码是angular.module  ('xxx' 跟页面ng-app='xxx'需要对应      ['ngRoute是引入依赖时的命名ngXxxx'])
+
+//config 使用的时候需要加上后缀$routeProvider
 ```
